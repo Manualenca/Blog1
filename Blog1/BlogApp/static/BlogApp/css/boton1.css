@@ -1,0 +1,85 @@
+/*Carta desplegable*/
+@import url('https://fonts.googleapis.com/css2?family=oppins:wght@300;400;500;600;700;800;900&display=swap');
+*
+{ /*texto*/
+    margin: 0;
+    padding: 0;
+    font-family: 'Poppins', sans-serif;
+}
+block content /*fondo */
+{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #1488ca;
+}
+.container
+{
+    position: relative;
+    width: 1200px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    padding: 30px;
+}
+.container .card
+{ /*el fondo y el tamaño de la carta usando el contneedor y carta*/
+    position: relative;
+    max-width: 300px;
+    height: 215px;
+    background: #e9e0e0;
+    margin: 30px 10px;
+    padding: 20px 15px;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.5);
+    transition: 0.3s ease-in-out;
+}
+.container .card:hover
+{
+    height: 420px;
+}
+.container .card .imgbx 
+{
+   position: relative;
+   width: 260px;
+   height: 160px;
+   top: -60px;
+   left: 20px;
+   z-index: 1;
+   box-shadow: 0 5px 20px rgba(0,0,0,0.2);
+}
+.container .card .imgbx img
+{
+  max-width: 90%;
+  border-radius: 4px;
+}
+
+.container .card .content 
+{
+    position: relative;
+    margin-top: -140px;
+    padding: 10px 15px;
+    text-align: center;
+    color:#111;
+    visibility: hidden;
+    opacity: 0;
+    transition: 0.3s ease-in-out;   
+}
+.container .card:hover .content 
+{/*sive para el texto de carta*/
+    visibility: visible;
+    opacity: 1;
+    text-align: center;
+    margin-top: -40px;
+    transition-delay: 0.3s;
+}
+.boton
+{
+  width: 33.33%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+/*final de la carta desplegable*/
