@@ -2,6 +2,10 @@
 
 {% load static %}
 
+{%block navbar%}
+    {% include 'BlogApp/navbar.html' %}
+{%endblock navbar%}
+
 {% block content %}
     <div class="row">
     {% for post in posts %}

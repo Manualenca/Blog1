@@ -3,13 +3,6 @@ body {
   box-sizing: border-box;
   min-height: auto;
 }
-.container-fluid{
-  height: 100%;
-  margin: 0;
-  padding: 0;
-  width: 100%;
-  background: #FFF;
-}
 /* ============= Animation background ========= */
 .background {
   background: linear-gradient(132deg, #FC415A, #591BC5, #212335);
@@ -18,7 +11,8 @@ body {
   position: absolute;
   height: 100vh;
   width: 100%;
-  overflow: auto;
+  overflow: hidden;
+
   padding:0;
   margin:0px;
 }
@@ -33,6 +27,14 @@ body {
   transform: scale(0) rotate(0deg) translate(-50%, -50%);
   animation: cube 12s ease-in forwards infinite;
 }
+
+.container {
+  position: relative;
+  padding-top: 90px;
+  width: 100%;
+  height: 100vh;
+}
+
 .cube:nth-child(2n) {
   border-color: #FFF ;
 }
@@ -62,6 +64,8 @@ body {
   top: 10vh;
 }
 /* ================= Header ============ */
+
+
 header{
   position: absolute;
   top:0%;
@@ -69,7 +73,9 @@ header{
   width:100%;
   margin: 0;
   padding: 0;
+  z-index: 100;
 }
+
 /* navbar */
 nav{
   color: #FFF;
@@ -93,13 +99,13 @@ nav ul li a{
 }
 nav ul li:hover a{
   text-decoration: none;
-  color: #591BC5;;
+  color: #EFEEF5;
 }
 nav ul li:hover{
   height: 45px;
   padding-top: 30px;
   margin-top: -30px;
-  background: #EFEEF5;
+  background: #591BC5;
   text-decoration: none;
   transform: skew(15deg);
 }
