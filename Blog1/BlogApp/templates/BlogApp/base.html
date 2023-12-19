@@ -36,18 +36,21 @@
               {%endblock navbar%}
       <!-- logo -->
             <div class="logo"><span>B</span></div>
-            {% block content%}
-      <!-- title & content -->
-            <section class="header-content">
-              <h1>Bienvenidos</h1>
-              <p> Aquí encontrarás noticias y podrás publicar la tuya,<br>
-                te puedes loguear si necesitas subir alguna noticias, <br>
-                sino tienes para ver todas las cosas que se subieron hasta el momento</p>
-              <button onclick="location.href='login'">Ingresar</button>
-              <button onclick="location.href='posts'">Navegar</button>
-            </section>
-            {% endblock %}
+            <div class="container">
+              {% block content %}
+              <!-- title & content -->
+              <section class="header-content">
+                <h1>Bienvenidos</h1>
+                <p> Aquí encontrarás noticias y podrás publicar la tuya,<br>
+                  te puedes loguear si necesitas subir alguna noticias, <br>
+                  sino tienes para ver todas las cosas que se subieron hasta el momento</p>
+                <button onclick="location.href='login'">Ingresar</button>
+                <button onclick="location.href='posts'">Navegar</button>
+              </section>
+              {% endblock %}
+            </div>
         </header>
+        </div>
   </body>
 
 

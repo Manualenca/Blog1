@@ -3,27 +3,27 @@
 {% load static %}
 
 {% block content %}
-<div class="container">
+    <div class="row">
     {% for post in posts %}
-        <div class= "col-md-4 mb-4">
-            <div class="card">
+        <div class= "card-container col-md-4 mb-4">
+            <div class="card" style="width: 20rem;">
                 {% if post.image %}
-                    <img class="card-img-top" src="{{post.image.url}}" alt="" style="width: 80%;" ></div> 
+                    <img class="card-img-top img-fluid" src="{{post.image.url}}" alt="" style="height: 200px; object-fit: cover;">
                 {% endif %}
                 <div class="card-body">
                     <h5 class="section-heading-upper" style="color:rgb(81, 57, 126);">{{post.title}}</h5> 
                     {% for category in post.categories.all %}
-                            <a href="{% url 'category' category.slug %}" class="ui button tertiary {{ category.color }}">{{ category.name }}</a>
+                        <a href="{% url 'category' category.slug %}" class="ui button tertiary {{ category.color }}">{{ category.name }}</a>
                     {% endfor %}
                     <div>
-                        <spam style="font-size: 12px"> Publicado: {{ post.created_at|date:"d/m/Y" }} por {{post.reporter}}</spam>
+                        <span style="font-size: 12px"> Publicado: {{ post.created_at|date:"d/m/Y" }} por {{post.reporter}}</span>
                     </div>
                     <br>
-                    <spam class="section-heading-lover" style="color:rgb(14, 3, 3);">{{ post.content|truncatewords:20 }}</spam>
+                    <div class="post-content" style="color:rgb(14, 3, 3);">{{ post.content }}</div>
                 </div>
             </div>   
         </div>
     <br> 
     {% endfor %}
-</div>   
-{% endblock %}   
+    </div>
+{% endblock %} 
