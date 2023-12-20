@@ -24,7 +24,7 @@ block content /*fondo */
     padding: 30px;
 }
 .container .card
-{ /*el fondo y el tamaño de la carta usando el contneedor y carta*/
+{ /*el fondo y el tamaño de la carta usando el contnedor y carta*/
     position: relative;
     max-width: 300px;
     height: 215px;
@@ -60,6 +60,7 @@ block content /*fondo */
 {
     position: relative;
     margin-top: -140px;
+    visibility: hidden;
     padding: 10px 15px;
     text-align: center;
     color:#111;
