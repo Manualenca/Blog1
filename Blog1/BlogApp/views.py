@@ -8,10 +8,6 @@ def inicio(request):
 
     return render(request,"BlogApp/base.html")
 
-def navbar(request):
-
-    return render(request,"BlogApp/navbar.html")
-
 def posts(request):
     posts = Post.objects.all()
 
