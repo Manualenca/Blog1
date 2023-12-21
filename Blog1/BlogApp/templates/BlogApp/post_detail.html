@@ -1,0 +1,126 @@
+{% extends "BlogApp/base.html" %}
+
+{% load static %}
+
+
+{%block navbar%}
+    {% include 'BlogApp/navbar.html' %}
+{%endblock navbar%}
+{% block content %} 
+<title>{% block title %} {{ post.title|truncatewords:5 }} {% endblock title %}</title>
+<style>
+    .noticia-container {
+        max-width: 80%;
+        margin: 20px 20px;
+        background-color: #fff;
+        box-shadow: 0   0   10px rgba(83, 35, 35, 0.1);
+        border-radius: 5%;
+        
+    }
+
+    .noticia-header {
+        background-color: #292626;
+        color: #fff;
+        padding: 10px;
+        text-align: center;
+    }
+
+    .noticia.content {
+        padding: 20px;
+        margin: 20px;
+    }
+
+    .noticia-img {
+        width: 50%;
+        height: auto;
+        max-height: auto;
+        object-fit: cover;
+        align-content: center;
+    }
+
+    @media screen and (max-width: 600px){
+        .noticia-container {
+            margin: 10px;
+        }
+    }
+    .editar-btn {
+        display: block;
+        margin: 20px auto;
+        padding: 10px;
+        background-color: #4CAF50;
+        color: #fff;
+        text-decoration: none;
+        text-align: center;
+        border-radius: 5px;
+    }
+    .editar-btn:hover {
+        border-radius: 0;
+    }
+    .container {
+        position: absolute;
+        padding-top: 90px;
+        width: 100%;
+        height: 180vh;
+    }
+    .background {
+        background: linear-gradient(132deg, #FC415A, #9e4d9e, #2c3dd1);
+        background-size: 400% 400%;
+        animation: Gradient 15s ease infinite;
+        position: fixed;
+        height: 100vh;
+        width: 100%;
+        overflow: hidden;
+
+        padding:0;
+        margin:0px;
+    }
+</style>
+
+
+<section class="container">
+    <div class="noticia-container">
+        <div class="noticia-header">
+            <h3 class="section-heading-upper" style="color:rgb(179, 171, 196);">{{post.title}}</h3>
+        </div>
+        <div class="noticia-content">
+            <br>
+            {% if post.image %}
+                <img class="noticia-img" src="{{post.image.url}}"  alt="" style="width: 50%;" > 
+            {% endif %}
+            <div style="text-align: center;">
+                <p style="font-size: 12px"> Publicado: {{ post.created_at|date:"d/M/Y" }} por {{post.reporter}}</p>
+                {% for category in post.categories.all %}
+                    <a href="{% url 'category' category.slug %}" class="badge text-bg-primary">{{ category.name }}</a>
+                {% endfor %}
+            </div>
+            <br>
+            <p class="section-heading-lover" style="color:rgb(14, 3, 3); margin: 15px; text-align: justify;">{{ post.content}}</p>
+            <br>
+            <a href="#" class="editar-btn" style="margin: 40px;">Editar</a>
+            <br>
+
+        </div>
+
+    </div>
+</setion>
+
+<!--
+<section class="container">
+    <article class="card">
+        <h5 class="section-heading-upper" style="color:rgb(81, 57, 126);">{{post.title}}</h5>
+        <div>
+            {% if post.image %}
+                <img class="intro-img img-fluid mb-3 mb-lg-0 rounded" src="{{post.image.url}}" alt="" style="width: 50%;" > 
+            {% endif %}
+            {% for category in post.categories.all %}
+                <a href="{% url 'category' category.slug %}" class="badge text-bg-primary">{{ category.name }}</a>
+            {% endfor %}
+                            
+            <spam style="font-size: 12px"> Publicado: {{ post.created_at|date:"d/m/Y" }} por {{post.reporter}}</spam>
+            <br> <br>
+            <spam class="section-heading-lover" style="color:rgb(14, 3, 3);">{{ post.content}}</spam>
+        </div>
+    </article>  
+</section>   -->
+
+{% endblock %}   

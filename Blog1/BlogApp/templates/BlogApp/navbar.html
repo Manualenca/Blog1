@@ -6,16 +6,15 @@
         Hola {{ user.get_full_name|default:user.username }}!
         </a>
       </li>
-      <li><a href="edit">Edición</a></li>
       <li><a href="create">Nuevo Post</a></li>
-      <li><a href="logout">Salir</a></li>
+      <li><a href="{% url 'logout' %}">Salir</a></li>
     {% else %}
         <!-- Botones para no iniciados -->
       <li><a href="login">Ingresar</a></li> 
       <li><a href="register">Registrarse</a></li>
     {% endif %}
       <li><a href="{% url 'Inicio' %}">Home</a></li>
-      <li><a href="posts">Noticias</a></li>
+      <li><a href="{% url 'Post' %}">Noticias</a></li>
       <li><a href="#"></a></li>
       <li><input class="form-control me-2" type="search" placeholder="Buscar" aria-label="Search"></li>
       <li><button class="btn btn btn-info" type="submit">Buscar</button></li>
