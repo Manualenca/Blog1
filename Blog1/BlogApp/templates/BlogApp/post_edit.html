@@ -1,0 +1,29 @@
+ {% extends "BlogApp/base.html" %} 
+
+{% load static %}
+
+
+{%block navbar%}
+    {% include 'BlogApp/navbar.html' %}
+{%endblock navbar%}
+
+
+{% block title %}
+    {{ post.title }}
+{% endblock %}
+
+<!-- Contenido del Post -->
+{% block content %}
+
+<section class="container">
+    <article class="form-group">
+        <form method="POST" action="{% url 'edit_infor'%}">
+            {% csrf_token %}
+            {{ form.as_p }} 
+            <button  type="submit" class="btn btn-success">Publicar</button> 
+            <a href="{% url 'Post' %}" class="btn btn-danger">Cancelar</a>
+        </form>
+    </article>
+</section>
+
+{%endblock content%}

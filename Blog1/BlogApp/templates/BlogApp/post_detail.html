@@ -32,10 +32,12 @@
 
     .noticia-img {
         width: 50%;
+        margin: 0 auto;
+        max-width: 100%;
         height: auto;
         max-height: auto;
         object-fit: cover;
-        align-content: center;
+        display: block;
     }
 
     @media screen and (max-width: 600px){
@@ -96,7 +98,7 @@
             <br>
             <p class="section-heading-lover" style="color:rgb(14, 3, 3); margin: 15px; text-align: justify;">{{ post.content}}</p>
             <br>
-            <a href="#" class="editar-btn" style="margin: 40px;">Editar</a>
+            <a href="{% url 'edit' post.slug %}" class="editar-btn" style="margin: 40px;">Editar</a>
             <br>
 
         </div>
