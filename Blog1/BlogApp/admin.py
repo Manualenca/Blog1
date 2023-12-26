@@ -1,6 +1,9 @@
 from django.contrib import admin
-
+from django import forms
 from .models import Post, Category, Comment, PostCategory
+from django.views.generic.edit import CreateView
+
+
 
 # Register your models here.
 
