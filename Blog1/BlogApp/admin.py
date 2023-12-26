@@ -4,28 +4,6 @@ from .models import Post, Category, Comment, PostCategory
 from django.views.generic.edit import CreateView
 
 
-class CrearPostView (CreateView):
-    model = Post
-    fields = ['reporter','title','content','categories', 'status', 'image','created_at']
-    labels ={
-        'reporter': 'Publicador',
-        'title': 'Titulo',
-        'content': 'Contenido',
-        'categories': 'Categoria',
-        'status': 'Estado', 
-        'image': 'Imagen',
-        'created_at': 'Fecha de Creación',
-        
-    }
-    widgets = {
-        'reporter': forms.Select(attrs={'class': 'form-contorl'}),
-        'title': forms.TextInput(attrs={'class': 'form-contorl'}),
-        'content': forms.Textarea(attrs={'class': 'form-contorl'}),
-        'categories': forms.Select(attrs={'class': 'form-contorl'}),
-        'status': forms.Select(attrs={'class': 'form-contorl'}),
-        'image': forms.ClearableFileInput(attrs={'class': 'form-contorl'}),
-        'created_at':forms.DateInput(attrs={'class': 'form-control', 'readonly': True}),
-    }
 
 # Register your models here.
 

@@ -2,6 +2,7 @@
 from django.shortcuts import render, redirect
 from django import forms 
 from.models import Post
+
 class CrearForm(forms.ModelForm):
     def Create_post_New(request):
         if request.method == 'POST':
