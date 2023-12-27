@@ -2,7 +2,7 @@ from urllib import request
 from django import forms
 from django.shortcuts import get_object_or_404, redirect, render
 
-from .forms.form_blog1 import PostForm
+from .forms import CrearForm
 
 #from Blog1.form_comments import CommentForm
 from .models import Post, Category, PostCategory
@@ -32,7 +32,7 @@ def posts_by_category(request, slug):
 
 def create_post(request):
     if request.method == 'POST':
-        post_form = PostForm.save(commit=False)
+        post_form = CrearForm.save(commit=False)
         categories = request.POST.getlist('categories')
 
         if post_form.is_valid():
@@ -42,7 +42,7 @@ def create_post(request):
                 PostCategory.object.create(post=new_post, category_id=category_id)
             return redirect('Inicio')
     else:
-        post_form= PostForm()
+        post_form= CrearForm()
         categories = Category.objects.all()
 
     context = {
