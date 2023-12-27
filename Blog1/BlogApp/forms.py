@@ -1,17 +1,15 @@
-#from .forms import CrearForm
 from django.shortcuts import render, redirect
 from django import forms 
-from.models import Post
+from .models import Post
 
 class CrearForm(forms.ModelForm):
-    def Create_post_New(request):
-        if request.method == 'POST':
-            form = CrearForm(request.POST)
-            if form.is_valid():
-                form.save()
-                return redirect ('CrearPostView')
-        else:
-            form = CrearForm()
-        return render(request,'post_create.html',{'form': form})
-
+    class Meta:
+        model = Post
+        fields = ['title', 'content', 'status', 'image','reporter']
+        widgets = {
+            'title': forms.TextInput(attrs={'class': 'form-control'}),
+            'content': forms.Textarea(attrs={'class': 'form-control'}),
+            'image': forms.ClearableFileInput(attrs={'class': 'form-control'}),
+            'reporter': forms.Select(attrs={'class': 'form-control'})
+        }
     

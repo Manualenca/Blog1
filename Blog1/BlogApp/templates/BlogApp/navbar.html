@@ -6,7 +6,7 @@
         Hola {{ user.get_full_name|default:user.username }}!
         </a>
       </li>
-      <li><a href="create">Nuevo Post</a></li>
+      <li><a href="{% url 'create' %}">Nuevo Post</a></li>
       <li><a href="{% url 'logout' %}">Salir</a></li>
     {% else %}
         <!-- Botones para no iniciados -->

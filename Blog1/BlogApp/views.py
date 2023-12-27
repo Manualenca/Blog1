@@ -1,7 +1,7 @@
 from urllib import request
 from django import forms
 from django.shortcuts import get_object_or_404, redirect, render
-
+from django.views.generic import UpdateView
 from .forms import CrearForm
 
 #from Blog1.form_comments import CommentForm
@@ -40,7 +40,7 @@ def create_post(request):
             new_post.save()
             for category_id in categories:
                 PostCategory.object.create(post=new_post, category_id=category_id)
-            return redirect('Inicio')
+            return redirect('create')
     else:
         post_form= CrearForm()
         categories = Category.objects.all()
@@ -49,7 +49,7 @@ def create_post(request):
                 'post_form': post_form,
                 'categories': categories
     }
-    return render(request,'BlogApp/post_create.html', {'Inicio': posts})
+    return render(request,'BlogApp/post_create.html', {'post': post_form})
             
 
 
@@ -59,13 +59,6 @@ def detalle(request, slug):
     post = get_object_or_404(Post, slug = slug)
 
     return render(request, 'BlogApp/post_detail.html', {'post': post})
-
-
-
-
-
-
-
 '''if request.method == 'POST':
         form = CommentForm(request.POST)
         if form.is_valid():
@@ -75,5 +68,22 @@ def detalle(request, slug):
             return redirect('post_detail', slug=post.slug)
     else:
         form = CommentForm()'''
-    
+
+class DetallePostView(UpdateView):
+   model = Post
+   form_class = CrearForm 
+   template_name = 'BlogApp/post_edit.html'
+   
+
+def GuardarModificacion(request):
+    if request.method == 'POST':
+        title = request.POST.get('title')
+        content = request.POST.get('content')
+        status = request.POST.get('status')
+        categories = request.POST.get('categories')
+
+        Post.objects.create(title = title, content = content, status = status, categories = categories)
+        return redirect("GuardarModificacion")
+    return render(request,'BlogApp/posts.html')
+
     
