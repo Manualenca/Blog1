@@ -11,9 +11,9 @@ COLOR_CHOICES = (
 )
 
 STATUS_CHOICES =(
-    ('1', 'DRAFT'),
-    ('2', 'PUBLISHED'),
-    ('3', 'REMOVED')
+    ('draft', 'DRAFT'),
+    ('published', 'PUBLISHED'),
+    ('removed', 'REMOVED')
 )
 class Category(models.Model):
     name= models.CharField(max_length=50, unique=True)

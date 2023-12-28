@@ -13,8 +13,8 @@ urlpatterns = [
    # path('navbar', views.navbar,name="Navbar"),
     path("category/<slug:slug>/", posts_by_category, name="category"),
     path("posts/<slug:slug>/", detalle, name="detail" ),
-    path("create", views.create_post, name="create" ),
-    path("post_e/<slug:slug>/", DetallePostView.as_view(), name="edit"),
+    path("create", create_post, name="create" ),
+    path("post_e/<slug:slug>/",DetallePostView.as_view(), name="edit"),
 
 
 ]  + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
