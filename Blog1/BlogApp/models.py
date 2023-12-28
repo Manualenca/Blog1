@@ -11,9 +11,9 @@ COLOR_CHOICES = (
 )
 
 STATUS_CHOICES =(
-    ('1', 'DRAFT'),
-    ('2', 'PUBLISHED'),
-    ('3', 'REMOVED')
+    ('draft', 'DRAFT'),
+    ('published', 'PUBLISHED'),
+    ('removed', 'REMOVED')
 )
 class Category(models.Model):
     name= models.CharField(max_length=50, unique=True)
@@ -67,4 +67,4 @@ class Comment(models.Model):
     comment_post= models.ForeignKey(Post, on_delete= models.CASCADE)
 
     def __str__(self):
-        return self.author
+        return self.author+" - "+self.comment_post.title

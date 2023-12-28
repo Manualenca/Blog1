@@ -15,7 +15,7 @@ block content /*fondo */
 }
 .container
 {
-    position: relative;
+    position: absolute;
     width: 1200px;
     display: flex;
     justify-content: center;
@@ -24,8 +24,8 @@ block content /*fondo */
     padding: 30px;
 }
 .container .card
-{ /*el fondo y el tamaño de la carta usando el contneedor y carta*/
-    position: relative;
+{ /*el fondo y el tamaño de la carta usando el contnedor y carta*/
+    position: absolute;
     max-width: 300px;
     height: 215px;
     background: #e9e0e0;
@@ -75,7 +75,7 @@ block content /*fondo */
     margin-top: -40px;
     transition-delay: 0.3s;
 }
-.boton
+.boton 
 {
   width: 33.33%;
   display: flex;
