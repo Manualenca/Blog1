@@ -1,0 +1,54 @@
+{% extends "BlogApp/base.html" %}
+
+{% load static %}
+
+
+{%block navbar%}
+    {% include 'BlogApp/navbar.html' %}
+{%endblock navbar%}
+{% block content %} 
+<style>
+    .container {
+        position: absolute;
+        padding-top: 90px;
+        width: 100%;
+        height: 180vh;
+    }
+</style>
+<title>{% block title %} Crear {% endblock title %}</title>
+    <div class="container">
+        <form class="ui form" method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            <div class="field">
+                <label>Título</label>{{ post.title }}
+            </div>
+            <div class="field">
+                <label>Contenido</label>{{ post.content }}
+            </div>
+            <div class="field">
+                <label>Estado</label>
+                <select name="status" class="ui dropdown">
+                    <option value="">Selecciona un estado</option>
+                    <option value="draft" {% if post_form.status.value == "draft" %}selected{% endif %}>DRAFT</option>
+                    <option value="published" {% if post_form.status.value == "published" %}selected{% endif %}>PUBLISHED</option>
+                    <option value="removed" {% if post_form.status.value == "removed" %}selected{% endif %}>REMOVED</option>
+                </select>
+            </div>
+            <div class="field">
+                <label>Imagen</label>
+                {{ post.image }}
+            </div>
+            <div class="field">
+                <label>Categorías</label>
+                
+                    <select class="fluid search dropdown" multiple="" name="categories" id="categories">
+                        <option value="">Seleccione Categoría(s)</option>
+                        {% for category in categories %}
+                            <option value="{{ category.id }}">{{ category.name }}</option>
+                        {% endfor %}
+                    </select>            
+            </div>
+            <button type="submit" class="btn btn-success" >Enviar</button>
+        </form>
+    </div> 
+{% endblock %}

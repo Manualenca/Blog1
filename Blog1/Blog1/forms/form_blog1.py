@@ -1,7 +1,7 @@
 from django import forms
-from ..models import Post, Category
+from models import Post, Category
 
-class PostForm(forms.ModelForm):
+'''class PostForm(forms.ModelForm):
     class Meta:
         model = Post
         fields = ['title', 'content', 'status', 'image']
@@ -10,7 +10,7 @@ class PostForm(forms.ModelForm):
             'content': forms.Textarea(attrs={'class': 'form-control'}),
             'image': forms.ClearableFileInput(attrs={'class': 'form-control'}),
         }
-
+'''
 class CategoryForm(forms.ModelForm):
     class Meta:
         model = Category

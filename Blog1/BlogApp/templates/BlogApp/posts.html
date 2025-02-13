@@ -1,29 +1,49 @@
 {% extends "BlogApp/base.html" %}
 
 {% load static %}
+<title>{% block title %} Noticias {% endblock title %}</title>
+
+{%block navbar%}
+    {% include 'BlogApp/navbar.html' %}
+{%endblock navbar%}
 
 {% block content %}
-<div class="container">
+<style>
+    .background {
+        background: linear-gradient(132deg, #FC415A, #9e4d9e, #2c3dd1);
+        background-size: 400% 400%;
+        animation: Gradient 15s ease infinite;
+        position: fixed;
+        height: 100vh;
+        width: 100%;
+        overflow: hidden;
+
+        padding:0;
+        margin:0px;
+    }
+</style>
+<section class="container">
     {% for post in posts %}
-        <div class= "col-md-4 mb-4">
+        <article class= "col-md-4 mb-2">
             <div class="card">
+                <div class="imgbx">
                 {% if post.image %}
-                    <img class="card-img-top" src="{{post.image.url}}" alt="" style="width: 80%;" ></div> 
+                   <a href="{% url 'detail' post.slug %}"> <img src="{{post.image.url}}" alt="" style="width: 100%;" > </a>
                 {% endif %}
-                <div class="card-body">
+                </div>
+                <div class="content"> 
                     <h5 class="section-heading-upper" style="color:rgb(81, 57, 126);">{{post.title}}</h5> 
-                    {% for category in post.categories.all %}
-                            <a href="{% url 'category' category.slug %}" class="ui button tertiary {{ category.color }}">{{ category.name }}</a>
-                    {% endfor %}
                     <div>
-                        <spam style="font-size: 12px"> Publicado: {{ post.created_at|date:"d/m/Y" }} por {{post.reporter}}</spam>
-                    </div>
-                    <br>
-                    <spam class="section-heading-lover" style="color:rgb(14, 3, 3);">{{ post.content|truncatewords:20 }}</spam>
+                        {% for category in post.categories.all %}
+                            <a href="{% url 'category' category.slug %}" class="badge text-bg-primary">{{ category.name }}</a>
+                        {% endfor %}
+                    </div>  
+                    <spam style="font-size: 12px"> Publicado: {{ post.created_at|date:"d/m/Y" }} por {{post.reporter}}</spam>
+                    <br> <br>
+                    <spam class="section-heading-lover" style="color:rgb(14, 3, 3);">{{ post.content|truncatewords:18 }}</spam>
                 </div>
             </div>   
-        </div>
-    <br> 
+        </article>
     {% endfor %}
-</div>   
+    </section>   
 {% endblock %}   

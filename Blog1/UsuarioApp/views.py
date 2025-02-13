@@ -12,7 +12,7 @@ def register(request):
         if form.is_valid():
             user = form.save()
             login(request, user)
-            messages.success(request, 'La cuenta ha sido creada con éxito.')
+           # messages.success(request, 'La cuenta ha sido creada con éxito.')
             return redirect('Post')  # Redirigir a la página de inicio después del registro
     else:
         form = UserRegisterForm()
